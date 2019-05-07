@@ -1,4 +1,4 @@
-// Type definitions for Electron 5.0.0
+// Type definitions for Electron 5.0.1
 // Project: http://electronjs.org/
 // Definitions by: The Electron Team <https://github.com/electron/electron>
 // Definitions: https://github.com/electron/electron-typescript-definitions
@@ -3999,14 +3999,14 @@ declare namespace Electron {
      * scheme is successfully registered or completion(error) when failed. To handle
      * the request, the callback should be called with either the file's path or an
      * object that has a path property, e.g. callback(filePath) or callback({ path:
-     * filePath }). The object may also have a headers property which gives a list of
-     * strings for the response headers, e.g. callback({ path: filePath, headers:
-     * ["Content-Security-Policy: default-src 'none'"]}). When callback is called with
-     * nothing, a number, or an object that has an error property, the request will
-     * fail with the error number you specified. For the available error numbers you
-     * can use, please see the net error list. By default the scheme is treated like
-     * http:, which is parsed differently than protocols that follow the "generic URI
-     * syntax" like file:, so you probably want to call
+     * filePath }). The object may also have a headers property which gives a map of
+     * headers to values for the response headers, e.g. callback({ path: filePath,
+     * headers: {"Content-Security-Policy": "default-src 'none'"]}). When callback is
+     * called with nothing, a number, or an object that has an error property, the
+     * request will fail with the error number you specified. For the available error
+     * numbers you can use, please see the net error list. By default the scheme is
+     * treated like http:, which is parsed differently than protocols that follow the
+     * "generic URI syntax" like file:, so you probably want to call
      * protocol.registerStandardSchemes to have your scheme treated as a standard
      * scheme.
      */
@@ -7129,11 +7129,6 @@ declare namespace Electron {
      */
     addEventListener(event: 'crashed', listener: (event: Event) => void, useCapture?: boolean): this;
     removeEventListener(event: 'crashed', listener: (event: Event) => void): this;
-    /**
-     * Fired when the gpu process is crashed.
-     */
-    addEventListener(event: 'gpu-crashed', listener: (event: Event) => void, useCapture?: boolean): this;
-    removeEventListener(event: 'gpu-crashed', listener: (event: Event) => void): this;
     /**
      * Fired when a plugin process is crashed.
      */
